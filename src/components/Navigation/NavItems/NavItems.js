@@ -15,17 +15,35 @@ const Ul = styled.ul`
   height: 100%;
 `;
 
-const NavItems = ({ mobile, clicked }) => {
+const NavItems = ({ mobile, clicked, loggedIn }) => {
+
+  let links;
+  if (loggedIn.uid) {
+    links = (
+        <Ul mobile={mobile}>
+            <NavItem mobile={mobile} clicked={clicked} link="/">
+              Todos
+            </NavItem>
+            <NavItem mobile={mobile} clicked={clicked} link="/logout">
+              Logout
+            </NavItem>
+        </Ul>
+    );
+  } else {
+    links = (
+      <Ul mobile={mobile}>
+        <NavItem mobile={mobile} clicked={clicked} link="/login">
+          Login
+        </NavItem>
+        <NavItem mobile={mobile} clicked={clicked} link="/signup">
+          SignUp
+        </NavItem>
+      </Ul> 
+    );
+  }
   return (
     <Nav mobile={mobile}>
-      <Ul mobile={mobile}>
-        <NavItem mobile={mobile} clicked={clicked} link="/">
-          home
-        </NavItem>
-        <NavItem mobile={mobile} clicked={clicked} link="/todos">
-          Todos
-        </NavItem>
-      </Ul>
+        {links}
     </Nav>
   );
 };
