@@ -9,7 +9,8 @@ import Login from './containers/Auth/Login/Login';
 import SignUp from './containers/Auth/SignUp/SignUp';
 import Logout from './containers/Auth/Logout/Logout';
 import VerifyEmail from './containers/Auth/VerifyEmail/VerifyEmail';
-
+import RecoverPassword from './containers/Auth/RecoverPassword/RecoverPassword';
+import Profile from './containers/Auth/Profile/Profile';
 
 const App = ({ loggedIn, emailVerified }) => {
 
@@ -26,6 +27,7 @@ const App = ({ loggedIn, emailVerified }) => {
       routes = (
         <Switch>
           <Route exact path="/" component={Todos} />
+          <Route exact path="/profile" component={Profile} />
           <Route exact path="/logout" component={Logout} />
           <Redirect to='/' />
         </Switch>
@@ -35,6 +37,7 @@ const App = ({ loggedIn, emailVerified }) => {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/recover" component={RecoverPassword} />
           <Redirect to='/login' />
         </Switch> 
       );
